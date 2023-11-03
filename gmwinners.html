@@ -7,13 +7,19 @@ body {
     font-family: Arial,Helvetica,sans-serif;
     font-size: 100%;
  }
- td {
- border: 1px solid black;
- margin: 2px;
- }
+
+
+.tableFixHead          { overflow: auto; height: 100px; }
+.tableFixHead thead th { position: sticky; top: 0; z-index: 1; }
+
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; }
+th     { background:#eee; }
     </style>
 </head>
 <body>
+<div class="tableFixHead">
 <table cellspacing="0">
 <colgroup style="" span="1"></colgroup>
 <colgroup style="" span="1"></colgroup>
@@ -21,7 +27,7 @@ body {
 <colgroup style="" span="1"></colgroup>
 <colgroup style="" span="1"></colgroup>
 <colgroup style="" span="1"></colgroup>
-<tbody data-check="-1">
+<thead data-check="-1">
 <tr>
 <td></td>
 <td><b>Masters</b></td>
@@ -30,6 +36,8 @@ body {
 <td><b>PGA Championship</b></td>
 <td></td>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td><b>2019</b></td>
 <td>Tiger Woods</td>
@@ -1312,5 +1320,6 @@ body {
 </tr>
 </tbody>
 </table>
+</div>
 </body>
 </html>
