@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/theme.css">
+        <link rel="stylesheet" href="./css/typography.css">
+        <link rel="stylesheet" href="./css/layout.css">
+        <link rel="stylesheet" href="./css/menu.css">
+        <link rel="stylesheet" href="./css/forms.css">
+        <link rel="stylesheet" href="./css/buttons.css">
+        <link rel="stylesheet" href="./css/tables.css">
+        <link rel="stylesheet" href="./css/modals.css">
+        <link rel="stylesheet" href="./css/dropdowns.css">
+        <link rel="stylesheet" href="./css/tooltips.css">
+        <link rel="stylesheet" href="./css/cards.css">
+        <link rel="stylesheet" href="./css/toggles.css">
+        <link rel="stylesheet" href="./css/flash.css">
+        <link rel="stylesheet" href="./css/accordions.css">
+        <script src="./js/daterange.js"></script>
+    </head>
+    <body>
+        <main>
+            <section id="forms">
+        <form id="daterange">
+            <fieldset>
+                <label>Start Date
+                    <input type="date" name="start"/>
+                </label>
+            </fieldset>
+            <fieldset>
+            </label>
+                <label>End Date
+                <input type="date" name="end"/>
+            </label>
+            </fieldset>
+            <fieldset>
+                <label>Duty Times (day of week,start time,end time,event name)
+                    <textarea name="times" rows="4"></textarea>
+                </label>
+            </fieldset>
+            <fieldset>
+                <label>Duty Type<input type="text" name="dutytype"></label>
+                <label>Event Type<input type="text" name="eventtype"></label>
+            </fieldset>
+            <fieldset class="actions">
+                <button type="submit" formaction="javascript:processDateRange()">Generate Slots</button>
+            </fieldset>
+        </form>
+        <form id="dutyslots">
+            <fieldset>
+                <label>Duty Slots
+                    <textarea name="slots" rows="20"></textarea>
+                </label>
+            </fieldset>
+            <fieldset class="actions">
+                <button type="submit" formaction="javascript:generateSCM()">Generate SCM</button>
+            </fieldset>
+        </form>
+        <form id="outputfiles">
+            <fieldset>
+                <label>Events
+                    <textarea name="events" rows="20"></textarea>
+                </label>
+                </fieldset>
+                <fieldset>
+                <label>Duties
+                    <textarea name="duties" rows="20"></textarea>
+                </label>
+            </fieldset>
+            <fieldset class="actions">
+                <button type="submit" formaction="javascript:downloadFiles()">Download Files</button>
+            </fieldset>
+
+        </form>
+
+    </section>
+    </main>
+
+    </body>
+</html>
