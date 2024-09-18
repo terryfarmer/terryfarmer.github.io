@@ -34,12 +34,8 @@
             </fieldset>
             <fieldset>
                 <label>Duty Times (day of week,start time,end time,event name)
-                    <textarea name="times" rows="4"></textarea>
+                    <textarea name="times" rows="4" placeholder="Sun,13:00,16:00,Lunchtime Bar"></textarea>
                 </label>
-            </fieldset>
-            <fieldset>
-                <label>Duty Type<input type="text" name="dutytype"></label>
-                <label>Event Type<input type="text" name="eventtype"></label>
             </fieldset>
             <fieldset class="actions">
                 <button type="submit" formaction="javascript:processDateRange()">Generate Slots</button>
@@ -47,9 +43,14 @@
         </form>
         <form id="dutyslots">
             <fieldset>
-                <label>Duty Slots
-                    <textarea name="slots" rows="20"></textarea>
+                <label>Duty Slots (date,start time,event name)
+                    <textarea name="slots" rows="20" placeholder="22/09/2024,13:00,15:00,Galley"></textarea>
                 </label>
+            </fieldset>
+            <fieldset>
+                <label>Duty Type(s)<input type="text" name="dutytype" placeholder="Bar,Bar,Black Sheep"></label>
+                <label>Event Type<input type="text" name="eventtype" placeholder="Social"></label>
+                <label>Event Tag<input type="text" name="eventtag" placeholder="Bar"></label>
             </fieldset>
             <fieldset class="actions">
                 <button type="submit" formaction="javascript:generateSCM()">Generate SCM</button>

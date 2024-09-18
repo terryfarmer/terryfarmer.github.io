@@ -17,7 +17,7 @@ function processDateRange() {
         if (dayMap.has(d.getUTCDay())) {
             settings = dayMap.get(d.getUTCDay())
             l = dateAsUKString(d) + "," + settings.get("start") + "," + settings.get("end") + "," +
-            settings.get("title") + "," + daysOfWeek[d.getUTCDay()]
+            settings.get("title") // + "," + daysOfWeek[d.getUTCDay()]
             fSlots.value = fSlots.value + l + "\n"
         }
     }
@@ -25,22 +25,27 @@ function processDateRange() {
 
 function generateSCM() {
     inputForm = document.getElementById('daterange');
-    fDutyType = inputForm.elements.namedItem("dutytype")
-    fEventType = inputForm.elements.namedItem("eventtype")
     outputForm = document.getElementById('outputfiles');
     fEvents = outputForm.elements.namedItem("events")
     fDuties = outputForm.elements.namedItem("duties")
     slotsForm = document.getElementById('dutyslots');
+    fDutyType = slotsForm.elements.namedItem("dutytype")
+    dutyTypes = fDutyType.value.split(",")
+    fEventType = slotsForm.elements.namedItem("eventtype")
+    fEventTag = slotsForm.elements.namedItem("eventtag")
+
     fSlots = slotsForm.elements.namedItem('slots')
     slots = fSlots.value.split("\n")
     fEvents.value = "Name,Start date (dd/mm/yyyy),Stop date (dd/mm/yyyy),Start time,End time,Notes,Tag,Event type\n"
     fDuties.value = "Duty Date (UK),Duty Time,Duty Type,Event,Swappable,Reminders,Allow volunteers\n"
     for (i = 0 ; i < slots.length; i++) {
         if (slots[i].length > 10) {
-            e = generateEventFromSlot(slots[i],fDutyType.value,fEventType.value)
+            e = generateEventFromSlot(slots[i],fEventTag.value,fEventType.value)
             fEvents.value = fEvents.value + e + "\n"
-            d = generateDutyFromSlot(slots[i],fDutyType.value)
-            fDuties.value = fDuties.value + d + "\n"
+            for (j = 0 ; j < dutyTypes.length; j++) {
+                d = generateDutyFromSlot(slots[i],dutyTypes[j])
+                fDuties.value = fDuties.value + d + "\n"
+            }
         }
     }
 }
@@ -76,7 +81,7 @@ function createDutyMap(textarea) {
 
 function generateEventFromSlot(slot,tag,dutyType) {
     items = slot.split(",")
-    if (items.length != 5) {
+    if (items.length != 4) {
         return "Malformed slot[" + slot + "]"
     }
     return items[3] + "," + items[0] + "," + items[0] + "," + items[1] + "," + items[2] +
@@ -85,7 +90,7 @@ function generateEventFromSlot(slot,tag,dutyType) {
 
 function generateDutyFromSlot(slot,dutyType) {
     items = slot.split(",")
-    if (items.length != 5) {
+    if (items.length != 4) {
         return "Malformed slot[" + slot + "]"
     }
     return items[0] + "," + items[1] + ","  + dutyType + "," + items[3]  + ",Yes,Yes,Yes"
