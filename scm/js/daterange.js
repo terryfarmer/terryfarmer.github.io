@@ -1,5 +1,14 @@
 const daysOfWeek = [ "Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
 
+function restoreFields() {
+    form = 	document.getElementById('daterange');
+    form.elements.namedItem("times").value = localStorage.getItem("times")
+    slotsForm = document.getElementById('dutyslots');
+    slotsForm.elements.namedItem("dutytype").value = localStorage.getItem("dutytype")
+    slotsForm.elements.namedItem("eventtype").value = localStorage.getItem("eventtype")
+    slotsForm.elements.namedItem("eventtag").value = localStorage.getItem("eventtag")
+}
+
 function processDateRange() {
     form = 	document.getElementById('daterange');
     start = form.elements.namedItem("start")
@@ -7,6 +16,7 @@ function processDateRange() {
     end = form.elements.namedItem("end")
     dEnd = Date.parse(end.value)
     outputForm = document.getElementById('dutyslots');
+    localStorage.setItem("times",form.elements.namedItem("times").value)
     dayMap = createDutyMap(form.elements.namedItem("times"))
     fSlots = outputForm.elements.namedItem('slots')
     fSlots.value = ""
@@ -33,6 +43,9 @@ function generateSCM() {
     dutyTypes = fDutyType.value.split(",")
     fEventType = slotsForm.elements.namedItem("eventtype")
     fEventTag = slotsForm.elements.namedItem("eventtag")
+    localStorage.setItem("dutytype",fDutyType.value)
+    localStorage.setItem("eventtype",fEventType.value)
+    localStorage.setItem("eventtag",fEventTag.value)
 
     fSlots = slotsForm.elements.namedItem('slots')
     slots = fSlots.value.split("\n")
