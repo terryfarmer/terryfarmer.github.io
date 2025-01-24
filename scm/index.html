@@ -1,74 +1,70 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" href="./css/reset.css">
-        <link rel="stylesheet" href="./css/theme.css">
-        <link rel="stylesheet" href="./css/typography.css">
-        <link rel="stylesheet" href="./css/layout.css">
-        <link rel="stylesheet" href="./css/menu.css">
-        <link rel="stylesheet" href="./css/forms.css">
-        <link rel="stylesheet" href="./css/buttons.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="./js/daterange.js"></script>
     </head>
     <body>
-        <main>
-            <section id="forms">
-        <form id="daterange">
-            <fieldset>
-                <label>Start Date
-                    <input type="date" name="start"/>
-                </label>
-            </fieldset>
-            <fieldset>
-            </label>
-                <label>End Date
-                <input type="date" name="end"/>
-            </label>
-            </fieldset>
-            <fieldset>
-                <label>Duty Times (day of week,start time,end time,event name)
-                    <textarea name="times" rows="4" placeholder="Sun,13:00,16:00,Lunchtime Bar"></textarea>
-                </label>
-            </fieldset>
-            <fieldset class="actions">
-                <button type="submit" formaction="javascript:processDateRange()">Generate Slots</button>
-            </fieldset>
+        <div class="container-fluid">
+        <form id="daterange" class="row g-3">
+            <div class="col-6">
+                <label for="start" class="form-label">Start Date</label>
+                <input type="date" class="form-control" name="start" id="start"/>
+            </div>
+            <div class="col-6">
+                <label for="end" class="form-label">End Date</label>
+                <input type="date" name="end" class="form-control"/>
+            </div>
+            <div class="col-12">
+                <label for="times" class="form-label">Duty Times</label>
+                <textarea name="times" class="form-control" style="height: 120px" placeholder="Sun,13:00,16:00,Lunchtime Bar"></textarea>
+                <div class="form-text">(day of week,start time,end time,event name)</div>
+            </div>
+            <div class="col-12 mb-4">
+                <button type="submit" class="btn btn-primary" formaction="javascript:processDateRange()">Generate Slots</button>
+            </div>
         </form>
-        <form id="dutyslots">
-            <fieldset>
-                <label>Duty Slots (date,start time,event name)
-                    <textarea name="slots" rows="20" placeholder="22/09/2024,13:00,15:00,Galley"></textarea>
-                </label>
-            </fieldset>
-            <fieldset>
-                <label>Duty Type(s)<input type="text" name="dutytype" placeholder="Bar,Bar,Black Sheep"></label>
-                <label>Event Type<input type="text" name="eventtype" placeholder="Social"></label>
-                <label>Event Tag<input type="text" name="eventtag" placeholder="Bar"></label>
-            </fieldset>
-            <fieldset class="actions">
-                <button type="submit" formaction="javascript:generateSCM()">Generate SCM</button>
-            </fieldset>
+        <form id="dutyslots" class="row g-3">
+            <div class="col-12">
+                <label for="slots" class="form-label">Duty Slots</label>
+                <textarea name="slots" class="form-control" style="height: 300px" placeholder="22/09/2024,13:00,15:00,Galley"></textarea>
+                <div class="form-text">(date,start time,event name)</div>
+            </div>
+            <div class="col-md-4">
+                <label for="dutytype" class="form-label">Duty Type(s)</label>
+                <input type="text" name="dutytype" class="form-control" placeholder="Bar,Bar,Black Sheep">
+            </div>
+            <div class="col-md-4">
+                <label for="eventtype" class="form-label">Event Type</label>
+                <input type="text" name="eventtype" class="form-control" placeholder="Social">
+            </div>
+            <div class="col-md-4">
+                <label for="eventtag" class="form-label">Event Tag</label>
+                <input type="text" name="eventtag" class="form-control" placeholder="Bar">
+            </div>
+            <div class="col-12 mb-4">
+                <button type="submit" class="btn btn-primary" formaction="javascript:generateSCM()">Generate SCM</button>
+            </div>
         </form>
-        <form id="outputfiles">
-            <fieldset>
-                <label>Events
-                    <textarea name="events" rows="20"></textarea>
-                </label>
-                </fieldset>
-                <fieldset>
-                <label>Duties
-                    <textarea name="duties" rows="20"></textarea>
-                </label>
-            </fieldset>
-            <fieldset class="actions">
-                <button type="submit" formaction="javascript:downloadFiles()">Download Files</button>
-            </fieldset>
+        <form id="outputfiles" class="row">
+            <div class="col-12">
+                <label for="events" class="form-label">Events</label>
+                <textarea name="events" class="form-control" style="height:320px"></textarea>
+            </div>
+            <div class="col-12">
+                <label for="duties" class="form-label">Duties</label>
+                <textarea name="duties" class="form-control" style="height:320px"></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" formaction="javascript:downloadFiles()">Download Files</button>
+            </div>
 
         </form>
-
-    </section>
-    </main>
-
+    </div>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>window.onload = (event) => {
         restoreFields()
       };
