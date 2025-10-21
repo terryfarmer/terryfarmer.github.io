@@ -103,7 +103,7 @@ footer li {
     margin-bottom: .5rem;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 80rem) {
     body {
         grid-template-columns: 1fr;
         grid-template-areas: 'header'

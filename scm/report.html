@@ -1,0 +1,30 @@
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <style>
+            .table-disable { color:darkgrey}
+        </style>
+</head>
+<body>
+            <div class="container-fluid">
+        <form id="daterange" class="row g-3">
+            <div class="col-6">
+                <label for="start-date" class="form-label">Start Date</label>
+                <input type="date" class="form-control" name="start" id="start-date"/>
+            </div>
+            <div class="col-6">
+                <label for="file-input" class="form-label">Export File</label>
+                <input type="file" class="form-control" id="file-input" />
+            </div>
+        </form>
+<table id="duty-table" class="table table-striped table-sm">
+    <thead><th>Name</th><th id="count-header">Count</th><th id="days-header">Days since last duty</th></thead>
+</table>
+<div id="message"></div>
+<pre id="file-content"></pre>
+</div>
+</body>
+    <script src="./js/report.js"></script>
+</html>
