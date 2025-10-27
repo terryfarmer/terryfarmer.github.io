@@ -163,8 +163,9 @@ function handleFileSelection(event) {
 
 function populateTable() {
     const mapIter = barDutiesArray.values()
+    body = dutyTable.createTBody()
     for (const e of mapIter) {
-        row = dutyTable.insertRow(-1)
+        row = body.insertRow(-1)
         cell1 = row.insertCell(-1)
         cell1.innerHTML = e["name"]
         cell2 = row.insertCell(-1)
